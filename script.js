@@ -78,6 +78,48 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Notice Filtering Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const noticeFilters = document.querySelectorAll('.notice-filter');
+    const noticeItems = document.querySelectorAll('.notice-item');
+    
+    noticeFilters.forEach(filter => {
+        filter.addEventListener('click', function() {
+            // Remove active class from all filters
+            noticeFilters.forEach(f => f.classList.remove('active'));
+            // Add active class to clicked filter
+            this.classList.add('active');
+            
+            const category = this.getAttribute('data-filter');
+            
+            noticeItems.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                    item.style.animation = 'fadeInUp 0.5s ease forwards';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Add fade-in animation for notice items
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    `;
+    document.head.appendChild(style);
+});
+
 // Smooth Scrolling for Navigation Links
 document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('a[href^="#"]');
