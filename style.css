@@ -1708,6 +1708,25 @@ body {
     line-height: 1.6;
 }
 
+.facility-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+
+.facility-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.facility-list li i {
+    color: #1e3a8a;
+    font-size: 1.1rem;
+    min-width: 20px;
+}
+
 /* Footer */
 .footer {
     background: #1e3a8a;
@@ -2658,5 +2677,457 @@ body {
         width: 100%;
         max-width: 300px;
         text-align: center;
+    }
+}
+
+/* About UCET Section */
+.about-ucet {
+    padding: 100px 0;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-ucet::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+    animation: rainbowFlow 3s ease-in-out infinite;
+}
+
+.about-ucet::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -100px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+@keyframes rainbowFlow {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(180deg); }
+}
+
+.about-ucet-content {
+    position: relative;
+    z-index: 2;
+}
+
+.about-ucet-main {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.about-ucet-text h3 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-weight: 800;
+    position: relative;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+}
+
+.about-ucet-text h3::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    border-radius: 3px;
+    animation: expandWidth 1.5s ease-out forwards;
+}
+
+@keyframes expandWidth {
+    from { width: 0; }
+    to { width: 80px; }
+}
+
+.about-ucet-text p {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: #555;
+    margin-bottom: 35px;
+    text-align: justify;
+}
+
+.key-information, .courses-admissions, .placements-info {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+    border: none;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 8px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(10px);
+}
+
+.key-information::before, .courses-admissions::before, .placements-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+    animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.key-information:hover, .courses-admissions:hover, .placements-info:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.2),
+        0 15px 30px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.key-information h4, .courses-admissions h4, .placements-info h4 {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.key-information h4::after, .courses-admissions h4::after, .placements-info h4::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    border-radius: 2px;
+    animation: expandWidth 1s ease-out 0.5s forwards;
+}
+
+.info-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.8) 100%);
+    border-radius: 15px;
+    border-left: 5px solid #ff6b6b;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+}
+
+.info-item:hover::before {
+    left: 100%;
+}
+
+.info-item:hover {
+    transform: translateX(8px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(255, 107, 107, 0.25);
+    border-left-color: #4ecdc4;
+}
+
+.info-label {
+    font-weight: 700;
+    color: #2c3e50;
+    min-width: 130px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-value {
+    color: #34495e;
+    line-height: 1.7;
+    flex: 1;
+    font-weight: 500;
+}
+
+.course-info {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.course-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.8) 100%);
+    border-radius: 15px;
+    border-left: 5px solid #4ecdc4;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.course-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.6s ease;
+}
+
+.course-item:hover::before {
+    left: 100%;
+}
+
+.course-item:hover {
+    transform: translateX(8px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(78, 205, 196, 0.25);
+    border-left-color: #45b7d1;
+}
+
+.course-label {
+    font-weight: 700;
+    color: #2c3e50;
+    min-width: 110px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.course-value {
+    color: #34495e;
+    line-height: 1.7;
+    flex: 1;
+    font-weight: 500;
+}
+
+.placements-info p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #34495e;
+    margin: 0;
+    text-align: justify;
+    font-weight: 500;
+}
+
+.about-ucet-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.about-ucet-stats .stat-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+    border: none;
+    border-radius: 20px;
+    padding: 30px 25px;
+    text-align: center;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 8px 16px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.about-ucet-stats .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
+    animation: shimmer 2.5s ease-in-out infinite;
+}
+
+.about-ucet-stats .stat-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.2),
+        0 15px 30px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.about-ucet-stats .stat-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.about-ucet-stats .stat-card:hover .stat-icon {
+    transform: scale(1.15) rotate(5deg);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-ucet-stats .stat-icon::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+}
+
+.about-ucet-stats .stat-card:hover .stat-icon::before {
+    animation: shine 1s ease;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.about-ucet-stats .stat-icon i {
+    font-size: 1.8rem;
+    color: white;
+    z-index: 2;
+    position: relative;
+}
+
+.about-ucet-stats .stat-number {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.about-ucet-stats .stat-label {
+    font-size: 0.95rem;
+    color: #6c757d;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design for About UCET */
+@media (max-width: 768px) {
+    .about-ucet {
+        padding: 80px 0;
+    }
+    
+    .about-ucet-main {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .about-ucet-text h3 {
+        font-size: 2rem;
+    }
+    
+    .about-ucet-text p {
+        font-size: 1.05rem;
+    }
+    
+    .key-information, .courses-admissions, .placements-info {
+        padding: 25px;
+        margin-bottom: 25px;
+    }
+    
+    .info-item, .course-item {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .info-label, .course-label {
+        min-width: auto;
+        font-size: 0.9rem;
+    }
+    
+    .about-ucet-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .about-ucet-stats .stat-card {
+        padding: 25px 20px;
+    }
+    
+    .about-ucet-stats .stat-number {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-ucet {
+        padding: 60px 0;
+    }
+    
+    .about-ucet-text h3 {
+        font-size: 1.8rem;
+    }
+    
+    .key-information, .courses-admissions, .placements-info {
+        padding: 20px;
+    }
+    
+    .about-ucet-stats {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .about-ucet-stats .stat-card {
+        padding: 20px 15px;
+    }
+    
+    .about-ucet-stats .stat-number {
+        font-size: 1.6rem;
     }
 }
