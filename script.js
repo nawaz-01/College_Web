@@ -1,5 +1,86 @@
 // Notice Section Functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Authentication Tab Functionality
+    const authTabs = document.querySelectorAll('.auth-tab');
+    const authForms = document.querySelectorAll('.auth-form');
+
+    // Add click event listeners to auth tabs
+    authTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
+            
+            // Remove active class from all tabs
+            authTabs.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            this.classList.add('active');
+            
+            // Hide all forms
+            authForms.forEach(form => form.classList.remove('active'));
+            // Show target form
+            const targetForm = document.getElementById(targetTab + '-form');
+            if (targetForm) {
+                targetForm.classList.add('active');
+            }
+        });
+    });
+
+    // Form submission handling
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('#login-email').value;
+            const password = this.querySelector('#login-password').value;
+            
+            if (email && password) {
+                showNotification('Login successful!', 'success');
+                // Here you would typically send the data to your backend
+                console.log('Login attempt:', { email, password });
+            } else {
+                showNotification('Please fill in all fields.', 'error');
+            }
+        });
+    }
+
+    if (signupForm) {
+        signupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = {
+                firstname: this.querySelector('#signup-firstname').value,
+                lastname: this.querySelector('#signup-lastname').value,
+                email: this.querySelector('#signup-email').value,
+                role: this.querySelector('#signup-role').value,
+                password: this.querySelector('#signup-password').value,
+                confirmPassword: this.querySelector('#signup-confirm-password').value
+            };
+            
+            if (formData.password !== formData.confirmPassword) {
+                showNotification('Passwords do not match.', 'error');
+                return;
+            }
+            
+            if (Object.values(formData).every(value => value)) {
+                showNotification('Account created successfully!', 'success');
+                // Here you would typically send the data to your backend
+                console.log('Signup attempt:', formData);
+            } else {
+                showNotification('Please fill in all fields.', 'error');
+            }
+        });
+    }
+
+    // Social login buttons
+    const socialButtons = document.querySelectorAll('.social-btn');
+    socialButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const provider = this.classList.contains('google') ? 'Google' : 'Microsoft';
+            showNotification(`${provider} login coming soon!`, 'success');
+        });
+    });
+
     // Notice filtering functionality
     const noticeFilters = document.querySelectorAll('.notice-filter');
     const noticeItems = document.querySelectorAll('.notice-item');
